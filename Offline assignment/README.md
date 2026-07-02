@@ -6,14 +6,22 @@ This directory contains the C++ implementation for **Binary Search**, **Lower Bo
 
 ---
 
-## 🎯 Problem Statement
+## 🎯 Problem Statements
 
+### 1. Bookstore Inventory System (`00724205101098_Offline1.cpp`)
 A bookstore maintains a sorted list of unique book IDs to quickly identify whether a book is available in stock. The task is to write a C++ program that uses **Binary Search** to determine if a specific book ID is present in the list. Additionally, the store often needs to find the first book ID that is not smaller than a given value (**lower bound**) and the first book ID that is greater than a given value (**upper bound**) in order to manage restocking and categorization. 
 
 Given a sorted array of book IDs and a query book ID, the program outputs:
 1. Whether the book exists in the list.
 2. The lower bound position.
 3. The upper bound position corresponding to the query.
+
+### 2. Product Inventory Search (`Product Inventory Search.cpp`)
+Similar to the bookstore problem, a warehouse maintains an unsorted list of product IDs. Write a C++ program to:
+1. Sort the given array of product IDs.
+2. Use **Binary Search** to check if a requested product ID exists and print "Found" or "Not found".
+3. Find and print the **Upper Bound Index** (the index of the first product ID `>` the query).
+4. Find and print the **Lower Bound Index** (the index of the first product ID `>=` the query).
 
 ---
 
