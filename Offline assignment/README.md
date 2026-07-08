@@ -1,49 +1,79 @@
-# 📚 Data Structure Lab: Offline Assignments (CSE2104)
+<div align="center">
 
-Welcome to the **Offline Assignments** for the CSE2104 Data Structure Lab! This repository contains C++ implementations covering searching and sorting algorithms.
+# 📚 CSE2104 — Data Structure Lab
+### Ahsanullah University of Science and Technology
+**Student:** Hasibul Hasan &nbsp;|&nbsp; **ID:** 00724205101098 &nbsp;|&nbsp; **Section:** B2 &nbsp;|&nbsp; **Semester:** Fall 2025
+
+</div>
 
 ---
 
-## 📁 Assignments
+## 📂 Assignment Index
+
+| # | Type | Topic | Folder |
+|---|------|--------|--------|
+| 1 | 🟦 Offline | Binary Search, Lower Bound & Upper Bound | [`Offline_assignment_1/`](./Offline_assignment_1/) |
+| 2 | 🟦 Offline | Selection Sort (Multi-key) | [`Offline_assignment_2/`](./Offline_assignment_2/) |
+| 3 | 🟩 Online | Product Inventory Search | [`Online_assignment_1/`](./Online_assignment_1/) |
 
 ---
 
-## 🔎 Offline Assignment 1 — Binary Search, Lower Bound & Upper Bound
+<br>
 
-This assignment focuses on implementing searching algorithms applied to a bookstore inventory system.
+## 🟦 Offline Assignment 1 — Binary Search, Lower Bound & Upper Bound
+
+> 📁 **Files:** [`Offline_assignment_1/00724205101098_Offline1.cpp`](./Offline_assignment_1/00724205101098_Offline1.cpp) &nbsp;|&nbsp; [`Offline_assignment_1/00724205101098_Offline1.pdf`](./Offline_assignment_1/00724205101098_Offline1.pdf)
 
 ### 🎯 Problem Statement
 
-A bookstore maintains a sorted list of unique book IDs to quickly identify whether a book is available in stock. The task is to write a C++ program that uses **Binary Search** to determine if a specific book ID is present in the list. Additionally, the store often needs to find the first book ID that is not smaller than a given value (**lower bound**) and the first book ID that is greater than a given value (**upper bound**) in order to manage restocking and categorization.
+A bookstore maintains a **sorted list of unique book IDs** to quickly identify whether a book is available in stock. Write a C++ program that uses **Binary Search** to determine if a specific book ID is present in the list. Additionally, the store often needs to find:
+- The **first book ID ≥ a given value** (lower bound) for restocking
+- The **first book ID > a given value** (upper bound) for categorization
 
-Given a sorted array of book IDs and a query book ID, the program outputs:
-1. Whether the book exists in the list.
-2. The lower bound position.
-3. The upper bound position corresponding to the query.
+Given a sorted array of book IDs and a query book ID, output:
+1. Whether the book **exists** in the list
+2. The **lower bound** position
+3. The **upper bound** position
 
-### 💡 Concepts
+#### ✅ Tasks
+1. Read the number of book IDs and the sorted list.
+2. Read the query book ID to be searched.
+3. Implement **Binary Search** to check existence.
+4. Implement logic to find the **lower bound**.
+5. Implement logic to find the **upper bound**.
+6. Display search result along with lower and upper bound indices.
 
-#### 🔍 Binary Search
-Binary search works by repeatedly dividing in half the portion of a sorted list that could contain the target item.
-- If `key == arr[mid]` → Found!
-- If `key > arr[mid]` → Search right half (`low = mid + 1`)
-- If `key < arr[mid]` → Search left half (`high = mid - 1`)
-- **Time Complexity:** `O(log N)`
+> You should write user defined functions for Binary Search, Lower Bound and Upper Bound. Input should be taken inside `main`. All user defined functions must be called from `main`.
 
-#### 📉 Lower Bound
-The **first element ≥ target** in a sorted array.
-- If `arr[mid] >= key` → record `ans = mid`, search left half
-- If `arr[mid] < key` → search right half
+---
 
-#### 📈 Upper Bound
-The **first element > target** in a sorted array.
-- If `arr[mid] > key` → record `ans = mid`, search left half
-- If `arr[mid] <= key` → search right half
+### 🧠 Algorithm
 
-### 📄 Source Code (`00724205101098_Offline1.cpp`)
+```
+1. Read N (number of book IDs)
+2. Read all book IDs into a vector
+3. Sort the vector in ascending order
+4. Read the query book ID (key)
+5. Binary Search:
+      low = 0, high = N-1
+      while low <= high:
+          mid = (low + high) / 2
+          if key == arr[mid] → Found, break
+          if key > arr[mid]  → low = mid + 1
+          else               → high = mid - 1
+6. Lower Bound:
+      Find first index where arr[index] >= key
+7. Upper Bound:
+      Find first index where arr[index] > key
+8. Print result
+```
+
+---
+
+### 💻 Source Code
 
 ```cpp
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 void binarySearch(vector<int> v, int key)
@@ -56,12 +86,12 @@ void binarySearch(vector<int> v, int key)
     while(low <= high)
     {
         mid = (low + high) / 2;
-        if(key == v[mid]) { flag = 1; break; }
-        else if(key > v[mid]) { low = mid + 1; }
-        else { high = mid - 1; }
+        if(key == v[mid])      { flag = 1; break; }
+        else if(key > v[mid])  { low = mid + 1; }
+        else                   { high = mid - 1; }
     }
     if(flag == 1) cout << "Book Found";
-    else cout << "Book Not Found";
+    else          cout << "Book Not Found";
 }
 
 int lowerBound(vector<int> a, int key)
@@ -72,7 +102,7 @@ int lowerBound(vector<int> a, int key)
     {
         int mid = (low + high) / 2;
         if (a[mid] >= key) { ans = mid; high = mid - 1; }
-        else { low = mid + 1; }
+        else               { low = mid + 1; }
     }
     return ans;
 }
@@ -85,7 +115,7 @@ int upperBound(vector<int> a, int key)
     {
         int mid = (low + high) / 2;
         if (a[mid] > key) { ans = mid; high = mid - 1; }
-        else { low = mid + 1; }
+        else              { low = mid + 1; }
     }
     return ans;
 }
@@ -105,60 +135,65 @@ int main()
 }
 ```
 
-### 🚀 Sample I/O
+### 📊 Sample I/O
 
-**Input:**
-```
-7
-10 20 30 40 50 60 70
-40
-```
-**Output:**
-```
-Book Found
-Lower Bound Index: 3
-Upper Bound Index: 4
-```
+| Sample Input | Sample Output |
+|---|---|
+| `7` | `Book Found` |
+| `10 20 30 40 50 60 70` | `Lower Bound Index: 3` |
+| `40` | `Upper Bound Index: 4` |
 
 ---
 
-## 📖 Offline Assignment 2 — Selection Sort (Multi-key)
+<br>
 
-This assignment focuses on implementing **Selection Sort** with multi-key comparison criteria on a list of books.
+## 🟦 Offline Assignment 2 — Selection Sort (Multi-key)
+
+> 📁 **Files:** [`Offline_assignment_2/00724205101098_Offline2.cpp`](./Offline_assignment_2/00724205101098_Offline2.cpp) &nbsp;|&nbsp; [`Offline_assignment_2/00724205101098_Offline2.pdf`](./Offline_assignment_2/00724205101098_Offline2.pdf)
 
 ### 🎯 Problem Statement
 
-You are given a list of books, each with a **title**, **author**, and **publication year**. Your task is to sort the books using the **Selection Sort** algorithm with the following criteria:
+You are given a list of books, each with a **title**, **author**, and **publication year**. Sort the books using the **Selection Sort** algorithm with the following multi-key criteria:
 
-1. **Primary key:** Publication year in **descending order** (most recent first).
-2. **Secondary key:** Author name in **ascending lexicographic order** (if years are equal).
-3. **Tertiary key:** Book title in **ascending lexicographic order** (if year and author are both equal).
+| Priority | Key | Order |
+|----------|-----|-------|
+| 1st | Publication Year | Descending (newest first) |
+| 2nd | Author Name | Ascending (A → Z) |
+| 3rd | Book Title | Ascending (A → Z) |
 
 **Input Format:**
-- First line: integer `N` — the number of books (`1 ≤ N ≤ 1000`)
-- Next `N` lines: each line contains `Title, Author, Publication Year`
-  - Title length: `1 ≤ length ≤ 100`
-  - Author length: `1 ≤ length ≤ 100`
+- Line 1: Integer `N` — number of books (`1 ≤ N ≤ 1000`)
+- Next `N` lines: `Title, Author, Publication Year`
+  - Title length: `1 ≤ len ≤ 100`
+  - Author length: `1 ≤ len ≤ 100`
   - Year: `1900 ≤ year ≤ 2025`
 
-**Output Format:**
-- Print each book on a new line in the format: `Title, Author, Publication Year`
+**Output Format:** Print each book as `Title, Author, Publication Year`
 
-### 💡 Algorithm
+---
 
-**Selection Sort with multi-key comparison:**
-1. Read `N` books, each with title, author, and year.
-2. Store each book in a `struct` with fields `bName`, `author`, and `y`.
-3. In each pass `i` (from `0` to `n-2`), find the "maximum" element from position `i` to `n-1` using:
-   - Larger year → wins (descending year)
-   - If years equal → smaller author name wins (ascending)
-   - If year and author equal → smaller title wins (ascending)
-4. Swap the found "maximum" element to position `i`.
-5. After all passes, print the sorted books.
+### 🧠 Algorithm
+
+```
+1. Read N books → store in struct { bName, author, y }
+2. Selection Sort (find "maximum" per criteria each pass):
+      for i = 0 to N-2:
+          max = i
+          for j = i+1 to N-1:
+              if b[j].year  > b[max].year          → max = j   (descending year)
+              if b[j].year == b[max].year:
+                  if b[j].author < b[max].author   → max = j   (ascending author)
+                  if authors equal:
+                      if b[j].name < b[max].name   → max = j   (ascending title)
+          swap(b[i], b[max])
+3. Print sorted books
+```
 
 **Time Complexity:** `O(N²)`
 
-### 📄 Source Code (`00724205101098_Offline2.cpp`)
+---
+
+### 💻 Source Code
 
 ```cpp
 #include<bits/stdc++.h>
@@ -180,22 +215,13 @@ void selectionSort(vector<Book> &b, int n)
         {
             if(b[j].y == b[max].y)
             {
-                if(b[j].author < b[max].author)
-                {
-                    max = j;
-                }
+                if(b[j].author < b[max].author)          { max = j; }
                 else if(b[j].author == b[max].author)
                 {
-                    if(b[j].bName < b[max].bName)
-                    {
-                        max = j;
-                    }
+                    if(b[j].bName < b[max].bName)        { max = j; }
                 }
             }
-            else if(b[j].y > b[max].y)
-            {
-                max = j;
-            }
+            else if(b[j].y > b[max].y)                  { max = j; }
         }
         swap(b[i], b[max]);
     }
@@ -214,21 +240,16 @@ int main()
         stringstream ss(line);
         getline(ss, b[i].bName, ',');
         getline(ss, b[i].author, ',');
-        if (b[i].author[0] == ' ')
-            b[i].author.erase(0, 1);
+        if (b[i].author[0] == ' ') b[i].author.erase(0, 1);
         ss >> b[i].y;
     }
     selectionSort(b, n);
     for(int i = 0; i < n; i++)
-    {
-        cout << b[i].bName << ", "
-             << b[i].author << ", "
-             << b[i].y << endl;
-    }
+        cout << b[i].bName << ", " << b[i].author << ", " << b[i].y << endl;
 }
 ```
 
-### 🚀 Sample I/O
+### 📊 Sample I/O
 
 **Input:**
 ```
@@ -251,4 +272,115 @@ Sapiens, Yuval Noah Harari, 2011
 
 ---
 
-*Generated with ❤️ for CSE2104 Data Structure Lab*
+<br>
+
+## 🟩 Online Assignment 1 — Product Inventory Search
+
+> 📁 **File:** [`Online_assignment_1/Product_Inventory_Search.cpp`](./Online_assignment_1/Product_Inventory_Search.cpp)
+
+### 🎯 Problem Statement
+
+A warehouse maintains an **unsorted list of product IDs**. Write a C++ program to:
+1. **Sort** the given array of product IDs.
+2. Use **Binary Search** to check if a requested product ID exists → print `Found` or `Not found`.
+3. Find and print the **Upper Bound Index** (first product ID `>` query).
+4. Find and print the **Lower Bound Index** (first product ID `≥` query).
+
+---
+
+### 🧠 Algorithm
+
+```
+1. Read N product IDs into a vector
+2. Read query key
+3. Sort the vector in ascending order
+4. Binary Search:
+      if key found → print "Found"
+      else         → print "Not found"
+5. Upper Bound:
+      Find first index where product_id > key
+6. Lower Bound:
+      Find first index where product_id >= key
+7. Print Upper Bound Index and Lower Bound Index
+```
+
+---
+
+### 💻 Source Code
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+int binarySearch(vector<int> v, int key)
+{
+    int low = 0;
+    int high = v.size() - 1;
+    while(low <= high)
+    {
+        int mid = (low + high) / 2;
+        if(key == v[mid])     { return 1; }
+        else if(key > v[mid]) { low = mid + 1; }
+        else                  { high = mid - 1; }
+    }
+    return -1;
+}
+
+int upperBound(vector<int> v, int key)
+{
+    int high = v.size() - 1, low = 0;
+    while(high >= low)
+    {
+        int mid = (high + low) / 2;
+        if(key >= v[mid]) { low = mid + 1; }
+        else              { high = mid - 1; }
+    }
+    return low;
+}
+
+int lowerBound(vector<int> v, int key)
+{
+    int high = v.size() - 1, low = 0;
+    while(high >= low)
+    {
+        int mid = (high + low) / 2;
+        if(key > v[mid]) { low = mid + 1; }
+        else             { high = mid - 1; }
+    }
+    return low;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<int> v;
+    for(int i = 0; i < n; i++) { int x; cin >> x; v.push_back(x); }
+    int key;
+    cin >> key;
+    sort(v.begin(), v.end());
+    int q = binarySearch(v, key);
+    if(q == 1) cout << "Found" << endl;
+    else       cout << "Not found" << endl;
+    cout << "Upper Bound Index : " << upperBound(v, key) << endl;
+    cout << "Lower Bound Index : " << lowerBound(v, key) << endl;
+}
+```
+
+### 📊 Sample I/O
+
+| Sample Input | Sample Output |
+|---|---|
+| `5` | `Found` |
+| `30 10 50 20 40` | `Upper Bound Index : 3` |
+| `30` | `Lower Bound Index : 2` |
+
+---
+
+<br>
+
+<div align="center">
+
+*Made with ❤️ for CSE2104 Data Structure Lab — AUST*
+
+</div>
