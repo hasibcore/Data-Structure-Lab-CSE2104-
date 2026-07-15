@@ -14,7 +14,8 @@
 |---|------|--------|--------|
 | 1 | 🟦 Offline | Binary Search, Lower Bound & Upper Bound | [`Offline_assignment_1/`](./Offline_assignment_1/) |
 | 2 | 🟦 Offline | Selection Sort (Multi-key) | [`Offline_assignment_2/`](./Offline_assignment_2/) |
-| 3 | 🟩 Online | Product Inventory Search | [`Online_assignment_1/`](./Online_assignment_1/) |
+| 3 | 🟦 Offline | Quick Sort & Merge Sort (10 Tasks) | [`Offline_assignment_3/`](./Offline_assignment_3/) |
+| 4 | 🟩 Online | Product Inventory Search | [`Online_assignment_1/`](./Online_assignment_1/) |
 
 ---
 
@@ -269,6 +270,31 @@ Educated, Tara Westover, 2018
 Money: Vintage Minis, Yuval Noah Harari, 2018
 Sapiens, Yuval Noah Harari, 2011
 ```
+
+---
+
+<br>
+
+## 🟦 Offline Assignment 3 — Quick Sort & Merge Sort (10 Tasks)
+
+> 📁 **Folder:** [`Offline_assignment_3/`](./Offline_assignment_3/) &nbsp;|&nbsp; 📋 **Report:** [`00724205101098_Offline3.pdf`](./Offline_assignment_3/00724205101098_Offline3.pdf) &nbsp;|&nbsp; 📝 **Questions:** [`Offline-3.pdf`](./Offline_assignment_3/Offline-3.pdf)
+
+This assignment contains 10 tasks exploring the behavior, comparison/swap counts, and modifications of Quick Sort and Merge Sort.
+
+### 🎯 Task Overview & Files
+
+| Task | Title | Problem Statement | Source Code |
+|---|---|---|---|
+| 1 | Quick Sort Comparison Count | Count comparisons during Quick Sort (last element as pivot). | [Task 1](./Offline_assignment_3/00724205101098_Offline3_Task1.cpp) |
+| 2 | Partitioning Array around Pivot | Rearrange array elements around a pivot. | [Task 2](./Offline_assignment_3/00724205101098_Offline3_Task2.cpp) |
+| 3 | Quick Sort Swap Count | Count total swaps during Quick Sort. | [Task 3](./Offline_assignment_3/00724205101098_Offline3_Task3.cpp) |
+| 4 | Output Chosen Pivot at Each Recursion | Print selected pivot at each recursion step. | [Task 4](./Offline_assignment_3/00724205101098_Offline3_Task4.cpp) |
+| 5 | Output Pivot Placement Index | Print final placement index of pivot in array. | [Task 5](./Offline_assignment_3/00724205101098_Offline3_Task5.cpp) |
+| 6 | Count Elements Less Than Pivot | Count elements smaller than pivot at each step. | [Task 6](./Offline_assignment_3/00724205101098_Offline3_Task6.cpp) |
+| 7 | Merge Sort Combined Median | Merge two sorted arrays and find the median. | [Task 7](./Offline_assignment_3/00724205101098_Offline3_Task7.cpp) |
+| 8 | Merge Sort Comparison Count | Count comparisons made during Merge Sort. | [Task 8](./Offline_assignment_3/00724205101098_Offline3_Task8.cpp) |
+| 9 | Count Merge Operations | Count total merge operations executed. | [Task 9](./Offline_assignment_3/00724205101098_Offline3_Task9.cpp) |
+| 10 | Determine Recursive Calls | Count total recursive calls in Merge Sort. | [Task 10](./Offline_assignment_3/00724205101098_Offline3_Task10.cpp) |
 
 ---
 
